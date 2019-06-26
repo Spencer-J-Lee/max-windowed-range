@@ -1,18 +1,17 @@
 system 'clear'
+require 'byebug'
 
 def naive_max_windowed_range(arr, length)
 	max_range = nil
 
 	arr.each_index do |i|
-		break if i+length == arr.length
+		break if (i+length) > arr.length
 
 		window = arr[i...i+length]
-		range  = window.max + window.min
+		range  = window.max - window.min
 
-		max_range = range if range > max_range
+		max_range = range if max_range.nil? || range > max_range
 	end
 
 	max_range
 end
-
-

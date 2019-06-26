@@ -1,6 +1,8 @@
 system 'clear'
 require 'byebug'
 
+
+# O(n) linear time
 def naive_max_windowed_range(arr, length)
 	max_range = nil
 
@@ -14,4 +16,7 @@ def naive_max_windowed_range(arr, length)
 	end
 
 	max_range
+end
+
+class MyQueue
 end

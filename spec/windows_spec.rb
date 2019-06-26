@@ -33,7 +33,6 @@ describe MyQueue do
 			expect(queue.instance_variable_get(:@store)).to be_empty
 		end
 	end
-
 	
 	describe "#enqueue" do
 		it "adds an element to the end of @store" do

@@ -43,3 +43,6 @@ class MyQueue
 		@store.empty?
 	end
 end
+
+class MyStack
+end

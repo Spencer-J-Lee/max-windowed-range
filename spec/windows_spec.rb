@@ -94,3 +94,61 @@ describe MyQueue do
 		end
 	end
 end
+
+describe MyStack do
+	subject(:stack) { MyStack.new }
+
+	describe "#initialize" do
+		it "instantiates an empty array held in @store" do
+			expect(stack.instance_variable_get(:@store)).to eq([])
+		end
+	end
+
+	describe "#push" do
+		it "adds an element to the top of the stack" do
+			stack.push("bottom")
+			stack.push("top")
+			expect(stack.instance_variable_get(:@store)).to eq("top")
+		end
+	end
+
+	before(:each) do
+		stack.push("bottom")
+		stack.push("top")
+	end
+
+	describe "#pop" do
+		it "removes an element from the top of the stack" do
+			stack.pop
+			expect(stack.instance_variable_get(:@store).last).to eq("bottom")
+		end
+	end
+
+	describe "#peek" do
+		it "returns the element at the top of the stack" do
+			expect(stack.peek).to eq("top")
+		end
+
+		it "doesn't remove the element" do
+			stack.peek
+			expect(stack.instance_variable_get(:@store)).to include("top")
+		end
+	end
+
+	describe "#size" do
+		it "returns the size of the stack" do
+			expect(stack.size).to eq(2)
+		end
+	end
+
+	describe "#empty?" do
+		it "returns true if the stack is empty" do
+			stack.pop
+			stack.pop
+			expect(stack.empty?).to be(true)
+		end
+		it "returns false if the stack is not empty" do
+			expect(stack.empty?).to be(false)
+		end
+	end
+end

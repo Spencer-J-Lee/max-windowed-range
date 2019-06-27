@@ -1,22 +1,19 @@
 require 'byebug'
 require_relative '6_min_max_stack_queue'
 
-def woke_max_windowed_range(arr, window_size)
-	return nil if window_size > arr.length
+def woke_max_windowed_range(nums_arr, window_size)
+	queue			 = MinMaxStackQueue.new
+	best_range = nil
 
-	arr			  = arr.dup
-	queue     = MinMaxStackQueue.new
-	max_range = nil
+	nums_arr.each do |num|
+		queue.enqueue(num)
+		queue.dequeue if queue.size > window_size
 
-	until arr.empty?
-		queue.enqueue(arr.shift) until queue.size == window_size
-
-		range = queue.max - queue.min
-
-		max_range = range if max_range.nil? || range > max_range
-
-		queue.dequeue
+		if queue.size == window_size
+			range 		 = queue.max - queue.min
+			best_range = range if !best_range || range > best_range
+		end
 	end
 
-	max_range
+	best_range
 end

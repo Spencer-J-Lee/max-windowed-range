@@ -17,7 +17,8 @@ class MinMaxStack < MyStack
 	end
 
 	def pop
-		[@store, @maxes, @mins].each(&:pop)
+		[@maxes, @mins].each(&:pop)
+		return @store.pop
 	end
 
 	def max

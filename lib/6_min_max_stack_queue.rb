@@ -38,6 +38,11 @@ class MinMaxStackQueue
 		@in_stack.empty? && @out_stack.empty?
 	end
 
+	def inspect
+		{ in_stack:  @in_stack,
+			out_stack: @out_stack }.inspect
+	end
+	
 	private
 	def transfer_queue
 		@out_stack.push(@in_stack.pop) until @in_stack.empty?

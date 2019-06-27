@@ -33,6 +33,12 @@ class MinMaxStack < MyStack
 		@store.empty?
 	end
 
+	def inspect
+		{ store: @store,
+		  maxes: @maxes,
+		  mins:  @mins   }.inspect
+	end
+
 	private
 	def set_max_and_min(value)
 		@maxes << value
